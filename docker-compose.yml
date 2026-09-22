@@ -1,0 +1,74 @@
+
+networks:
+  dmz:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.10.0.0/24
+  internal:
+    driver: bridge
+    internal: true
+    ipam:
+      config:
+        - subnet: 10.20.0.0/24
+
+services:
+
+  vpn-gateway:
+    image: ubuntu:22.04
+    container_name: vpn-gateway
+    hostname: vpn-gateway
+    tty: true
+    stdin_open: true
+    cap_add:
+      - NET_ADMIN
+    networks:
+      dmz:
+        ipv4_address: 10.10.0.10
+      internal:
+        ipv4_address: 10.20.0.10
+    command: sleep infinity
+
+  ldap-server:
+    image: ubuntu:22.04
+    container_name: ldap-server
+    hostname: ldap-server
+    tty: true
+    stdin_open: true
+    networks:
+      internal:
+        ipv4_address: 10.20.0.20
+    command: sleep infinity
+
+  monitoring-server:
+    image: ubuntu:22.04
+    container_name: monitoring-server
+    hostname: monitoring-server
+    tty: true
+    stdin_open: true
+    networks:
+      internal:
+        ipv4_address: 10.20.0.30
+    command: sleep infinity
+
+  target1:
+    image: ubuntu:22.04
+    container_name: target1
+    hostname: target1
+    tty: true
+    stdin_open: true
+    networks:
+      internal:
+        ipv4_address: 10.20.0.41
+    command: sleep infinity
+
+  target2:
+    image: ubuntu:22.04
+    container_name: target2
+    hostname: target2
+    tty: true
+    stdin_open: true
+    networks:
+      internal:
+        ipv4_address: 10.20.0.42
+    command: sleep infinity
