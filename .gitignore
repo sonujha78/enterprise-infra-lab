@@ -1,0 +1,15 @@
+# secrets & certs
+*.key
+*.pem
+*.crt
+!docs/**
+vpn/clients/*.ovpn
+ldap/bootstrap/*.ldif.bak
+
+# docker volumes/data
+**/data/
+**/db_data/
+
+# misc
+.env
+*.log
