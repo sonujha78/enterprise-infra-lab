@@ -1,0 +1,68 @@
+dn: ou=People,dc=example,dc=local
+objectClass: organizationalUnit
+ou: People
+
+dn: ou=Groups,dc=example,dc=local
+objectClass: organizationalUnit
+ou: Groups
+
+dn: uid=alice,ou=People,dc=example,dc=local
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+uid: alice
+sn: Sharma
+givenName: Alice
+cn: Alice Sharma
+displayName: Alice Sharma
+uidNumber: 10001
+gidNumber: 10001
+userPassword: {SSHA}placeholder
+gecos: Alice Sharma
+loginShell: /bin/bash
+homeDirectory: /home/alice
+
+dn: uid=bob,ou=People,dc=example,dc=local
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+uid: bob
+sn: Verma
+givenName: Bob
+cn: Bob Verma
+displayName: Bob Verma
+uidNumber: 10002
+gidNumber: 10002
+userPassword: {SSHA}placeholder
+gecos: Bob Verma
+loginShell: /bin/bash
+homeDirectory: /home/bob
+
+dn: uid=carol,ou=People,dc=example,dc=local
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+uid: carol
+sn: Singh
+givenName: Carol
+cn: Carol Singh
+displayName: Carol Singh
+uidNumber: 10003
+gidNumber: 10003
+userPassword: {SSHA}placeholder
+gecos: Carol Singh
+loginShell: /bin/bash
+homeDirectory: /home/carol
+
+dn: cn=admins,ou=Groups,dc=example,dc=local
+objectClass: posixGroup
+cn: admins
+gidNumber: 20001
+memberUid: alice
+
+dn: cn=developers,ou=Groups,dc=example,dc=local
+objectClass: posixGroup
+cn: developers
+gidNumber: 20002
+memberUid: bob
+memberUid: carol
