@@ -17,6 +17,8 @@ services:
   vpn-gateway:
     image: ubuntu:22.04
     container_name: vpn-gateway
+    sysctls:
+      - net.ipv4.ip_forward=1
     hostname: vpn-gateway
     tty: true
     stdin_open: true
