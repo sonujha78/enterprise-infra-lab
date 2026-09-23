@@ -56,6 +56,8 @@ services:
   target1:
     image: ubuntu:22.04
     container_name: target1
+    cap_add:
+      - NET_ADMIN
     hostname: target1
     tty: true
     stdin_open: true
@@ -67,6 +69,8 @@ services:
   target2:
     image: ubuntu:22.04
     container_name: target2
+    cap_add:
+      - NET_ADMIN
     hostname: target2
     tty: true
     stdin_open: true
